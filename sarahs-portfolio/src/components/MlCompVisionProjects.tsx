@@ -42,19 +42,7 @@ export function MlCompVisionProjects() {
   const [openImagesProject, setOpenImagesProject] = useState<string | null>(
     null,
   );
-  const cardVariant = {
-  hidden: (direction: number) => ({
-    opacity: 0,
-    x: direction > 0 ? 120 : -120,
-  }),
-  show: {
-    opacity: 1,
-    x: 0,
-    transition: {
-      duration: 0.8,
-    },
-  },
-};
+
 
   return (
     <section className="relative overflow-hidden py-16 sm:py-24">
@@ -82,10 +70,17 @@ export function MlCompVisionProjects() {
             return (
               <motion.article
   key={project.title}
-  custom={projects.indexOf(project) % 2 === 0 ? 1 : -1}
-  variants={cardVariant}
-  initial="hidden"
-  whileInView="show"
+  initial={{
+    opacity: 0,
+    x: projects.indexOf(project) % 2 === 0 ? 120 : -120,
+  }}
+  whileInView={{
+    opacity: 1,
+    x: 0,
+  }}
+  transition={{
+    duration: 0.8,
+  }}
   viewport={{ once: true, amount: 0.25 }}
   className={`relative grid items-start gap-6 lg:min-h-[360px] lg:gap-8 ${
     hasImages ? "lg:grid-cols-2" : "lg:grid-cols-1"
