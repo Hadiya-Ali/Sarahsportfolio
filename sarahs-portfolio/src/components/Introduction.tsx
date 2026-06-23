@@ -1,7 +1,15 @@
 "use client"
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 export function Introduction() {
+
+
+  const roles = [
+    { label: "3D Designer", href: "/fusion" },
+    { label: "Embedded", href: "/embedded" },
+    { label: "ML & CompVision", href: "/ml-comp-vision" },
+  ];
   return (
     <section id="about" className="relative overflow-hidden pb-16 pt-8 sm:pb-24">
       <div className="mx-auto grid w-full max-w-7xl items-center gap-12 px-5 lg:grid-cols-[0.92fr_1.08fr] lg:px-10">
@@ -19,25 +27,25 @@ export function Introduction() {
             </div>
           </div>
 
-         <motion.div
-  initial={{ x: -100, opacity: 0 }}
-  whileInView={{ x: 0, opacity: 1 }}
-  viewport={{ once: true }}
-  transition={{
-    duration: 0.8,
-    ease: "easeOut",
-    delay: 0.3,
-  }}
-  className="absolute -left-1 bottom-10 grid h-24 w-24 place-items-center bg-[var(--color-mint)] text-center text-[var(--color-bg)] shadow-[0_20px_45px_#00000047] sm:-left-2 sm:bottom-16 sm:h-32 sm:w-32"
->
-  <div>
-    <span className="mt-2 block text-sm font-black uppercase tracking-[0.12em]">
-      Sarah
-      <br />
-      Ali
-    </span>
-  </div>
-</motion.div>
+          <motion.div
+            initial={{ x: -100, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{
+              duration: 0.8,
+              ease: "easeOut",
+              delay: 0.3,
+            }}
+            className="absolute -left-1 bottom-10 grid h-24 w-24 place-items-center bg-[var(--color-mint)] text-center text-[var(--color-bg)] shadow-[0_20px_45px_#00000047] sm:-left-2 sm:bottom-16 sm:h-32 sm:w-32"
+          >
+            <div>
+              <span className="mt-2 block text-sm font-black uppercase tracking-[0.12em]">
+                Sarah
+                <br />
+                Ali
+              </span>
+            </div>
+          </motion.div>
         </div>
 
         <div>
@@ -60,13 +68,14 @@ export function Introduction() {
           </p>
 
           <div className="mt-9 grid gap-4 sm:grid-cols-3">
-            {["3D Designer", "Embedded", "Quality Assurance"].map((item) => (
-              <div
-                key={item}
-                className="border border-[var(--color-line)] bg-[#b0e4cc0f] px-5 py-4 text-sm font-bold text-[var(--color-mint)]"
+            {roles.map((item) => (
+              <Link
+                key={item.label}
+                href={item.href}
+                className="border border-[var(--color-line)] bg-[#b0e4cc0f] px-5 py-4 text-sm font-bold text-[var(--color-mint)] transition-all duration-300 hover:-translate-y-1 hover:border-[var(--color-mint)] hover:bg-[var(--color-mint)]/10"
               >
-                {item}
-              </div>
+                {item.label}
+              </Link>
             ))}
           </div>
         </div>

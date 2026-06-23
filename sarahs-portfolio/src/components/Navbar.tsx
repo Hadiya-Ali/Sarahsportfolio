@@ -1,6 +1,6 @@
 const navItems = [
   { label: "Home", href: "/" },
-  { label: "Fusion", href: "/fusion" },
+  { label: "3D Designer", href: "/fusion" },
   { label: "Embedded", href: "/embedded" },
   { label: "ML & Comp Vision", href: "/ml-comp-vision" },
 ];
